@@ -1,0 +1,1 @@
+{"name":"Local: contest","url":"d:\\DSA C++\\contest.cpp","tests":[{"id":1761557161091,"input":"xxxyxxx\n","output":""},{"id":1761564665052,"input":"abc","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\DSA C++\\contest.cpp","group":"local","local":true}
