@@ -64,23 +64,15 @@ ll lcmll(ll a,ll b){ return (a/gcdll(a,b))*b; }
 
 
 void solve() {
-    int n;
-    cin >> n;
+    string s;
+    cin >> s;
 
-    double sum = 0;
-    
-    f(i, n){
-        int p;
-        cin >> p;
-
-        sum += (p/100.0);
-
+    for(int j = s.size()-1; j>=0; j--){
+        s += s[j];
     }
 
-    double k = sum/n;
-
-
-    cout<<k*100;
+    cout << s << endl;
+    
 }
 
 int main() {
