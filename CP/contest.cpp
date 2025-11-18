@@ -66,22 +66,21 @@ ll lcmll(ll a,ll b){ return (a/gcdll(a,b))*b; }
 void solve() {
     int n;
     cin >> n;
-    
-    int currentPassengers = 0;
-    int maxCapacity = 0;
-    
-    for (int i = 0; i < n; ++i) {
-        int a, b; 
-        cin >> a >> b;
-        
-        currentPassengers -= a;
-        currentPassengers += b;
 
-        
-        maxCapacity = max(maxCapacity, currentPassengers);
-    }
+    double sum = 0;
     
-    cout << maxCapacity << el;
+    f(i, n){
+        int p;
+        cin >> p;
+
+        sum += (p/100.0);
+
+    }
+
+    double k = sum/n;
+
+
+    cout<<k*100;
 }
 
 int main() {

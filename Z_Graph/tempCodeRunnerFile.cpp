@@ -1,56 +1,40 @@
-#include <bits/stdc++.h>
-using namespace std;
+class Solution {
+public:
+    void dfs(int x, int y, int n, int m, vector<vector<char>>& grid){
+        // Base cases for recursion:
+        // 1. Out of bounds
+        // 2. Already visited (water '0' or part of another island we've sunk)
+        if (x < 0 || x >= n || y < 0 || y >= m || grid[x][y] == '0') {
+            return;
+        }
 
-int const N = 1e5+10;
+        // Mark the current land cell as visited by changing it to '0' (water)
+        grid[x][y] = '0';
 
-vector<int> g[N];
-vector<int> dis(N, -1);
+        // Explore in 4 directions (horizontally and vertically)
+        dfs(x + 1, y, n, m, grid); // Down
+        dfs(x - 1, y, n, m, grid); // Up
+        dfs(x, y + 1, n, m, grid); // Right
+        dfs(x, y - 1, n, m, grid); // Left
+    }
 
+    int numIslands(vector<vector<char>>& grid) {
+        if (grid.empty() || grid[0].empty()) {
+            return 0;
+        }
+        
+        int n = grid.size();
+        int m = grid[0].size();
 
-void bfs_path(int start){
-    queue<int>q;
-    q.push(start);
-   
-
-    dis[start] = 0;
-
-    while(!q.empty()){
-        int node = q.front();
-        q.pop();
-
-
-        for(int child : g[node]){
-            if(dis[child] == -1){
-                dis[child] = dis[node] + 1;
-                q.push(child);
+        int island = 0;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                if(grid[i][j] == '1'){
+                    island++;
+                    dfs(i, j, n, m, grid);
+                }
             }
         }
+        return island;
     }
-
-}
-
-int main(){
-    int n,m;
-    cin>>n>>m;
-
-    for(int i = 0; i<m; i++){
-        int u,v;
-        cin>>u>>v;
-
-        g[u].push_back(v);
-        g[v].push_back(u);
-
-    }
-
-    bfs_path(1);
-   
-
-    int shortest_path = 0;
-    for(int i = 1; i <= n; i++){
-        shortest_path += dis[i];
-    }
-    cout << shortest_path<<endl;
-
-
-    return 0;
-}
+};
